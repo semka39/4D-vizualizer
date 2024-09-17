@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://8eskpyuq6d2a"]
+
+[ext_resource type="Script" path="res://HyperCube.cs" id="1_52j8s"]
+[ext_resource type="PackedScene" uid="uid://d01n0sxhopvpl" path="res://decal.tscn" id="2_vytks"]
+
+[node name="HyperCube" type="Node3D"]
+script = ExtResource("1_52j8s")
+VoxelScene = ExtResource("2_vytks")

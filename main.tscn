@@ -1,0 +1,253 @@
+[gd_scene load_steps=7 format=3 uid="uid://s51wedyendp7"]
+
+[ext_resource type="Script" path="res://Camera.cs" id="1_si041"]
+[ext_resource type="PackedScene" uid="uid://8eskpyuq6d2a" path="res://hyper_cube.tscn" id="1_tlfue"]
+[ext_resource type="Script" path="res://Control.cs" id="3_0jq0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jitr7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fl0m4"]
+material = SubResource("StandardMaterial3D_jitr7")
+
+[sub_resource type="SphereMesh" id="SphereMesh_uavrm"]
+
+[node name="main" type="Node3D"]
+
+[node name="view_centre" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78622, 0)
+
+[node name="HyperCube" parent="view_centre" instance=ExtResource("1_tlfue")]
+IsHollow = true
+edgeMesh = SubResource("SphereMesh_fl0m4")
+otherMesh = SubResource("SphereMesh_uavrm")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("Target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00232267, 1.89952, 3.56893)
+far = 100.0
+script = ExtResource("1_si041")
+Target = NodePath("../view_centre")
+PanSensitivity = 0.05
+
+[node name="Control" type="CanvasLayer" parent="." node_paths=PackedStringArray("hyperCube")]
+script = ExtResource("3_0jq0r")
+hyperCube = NodePath("../view_centre/HyperCube")
+
+[node name="Background" type="Panel" parent="Control"]
+offset_right = 277.0
+offset_bottom = 651.0
+
+[node name="1" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 99.0
+offset_bottom = 31.0
+text = "XY rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/1"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="2" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 55.0
+offset_right = 99.0
+offset_bottom = 81.0
+text = "XZ rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/2"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="3" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 105.0
+offset_right = 99.0
+offset_bottom = 131.0
+text = "XW rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/3"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="4" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 152.0
+offset_right = 99.0
+offset_bottom = 178.0
+text = "YZ rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/4"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="5" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 205.0
+offset_right = 99.0
+offset_bottom = 231.0
+text = "YW rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/5"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="6" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 254.0
+offset_right = 99.0
+offset_bottom = 280.0
+text = "ZW rotating:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/6"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+max_value = 360.0
+
+[node name="7" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 360.0
+offset_right = 103.0
+offset_bottom = 386.0
+text = "XY perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/7"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="8" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 408.0
+offset_right = 103.0
+offset_bottom = 434.0
+text = "XZ perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/8"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="9" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 461.0
+offset_right = 103.0
+offset_bottom = 487.0
+text = "XW perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/9"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="10" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 511.0
+offset_right = 103.0
+offset_bottom = 537.0
+text = "YZ perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/10"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="11" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 557.0
+offset_right = 103.0
+offset_bottom = 583.0
+text = "YW perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/11"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="12" type="Label" parent="Control/Background"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 599.0
+offset_right = 103.0
+offset_bottom = 625.0
+text = "ZW perspective:"
+
+[node name="HSlider" type="HSlider" parent="Control/Background/12"]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 261.0
+offset_bottom = 43.0
+min_value = -1.0
+max_value = 1.0
+step = 0.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -7, 7, 7)
+light_color = Color(1, 0.392157, 0.392157, 1)
+light_energy = 5.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, -0.5, -0.5, 7, -7, -7)
+light_color = Color(0.392157, 0.392157, 1, 1)
+light_energy = 5.0
+
+[connection signal="drag_ended" from="Control/Background/1/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/2/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/3/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/4/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/5/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/6/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/7/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/8/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/9/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/10/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/11/HSlider" to="Control" method="drag_ended"]
+[connection signal="drag_ended" from="Control/Background/12/HSlider" to="Control" method="drag_ended"]

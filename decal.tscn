@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d01n0sxhopvpl"]
+
+[ext_resource type="Script" path="res://Voxel4D.cs" id="1_hdv8y"]
+
+[node name="Decal" type="Node3D"]
+script = ExtResource("1_hdv8y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
